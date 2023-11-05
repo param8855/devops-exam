@@ -9,7 +9,7 @@ def lambda_handler(event,context):
     "name": "addala Paramasiva",
     "email": "addala.paramasiva55@gmail.com"
     }
-    conn.request("GET","/candidate-email_serverless_lambda_stage/data",payload,headers={'X-Siemens-Auth': 'test'})
+    conn.request("POST","/candidate-email_serverless_lambda_stage/data",payload,headers={'X-Siemens-Auth': 'test'})
     
     response = conn.getresponse()
     print(response.read().decode())
