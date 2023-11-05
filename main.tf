@@ -22,6 +22,10 @@ resource "aws_route_table" "rt-1a" {
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = data.aws_nat_gateway.nat.id
   }
+  route {
+    cidr_block = "10.0.0.0/16"
+    gateway_id = "local"
+  }
 
   tags = {
     Name = "rt-1a"
