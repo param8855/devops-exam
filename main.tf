@@ -39,6 +39,7 @@ resource "aws_route_table_association" "a" {
 resource "aws_lambda_function" "invoke_http2" {
 
   filename      = data.archive_file.code.output_path
+  source_code_hash = data.archive_file.code.output_base64sha256
   function_name = "invoke_http_request2"
   role          = data.aws_iam_role.lambda.arn
   handler       = "invokehttprequest.lambda_handler"
