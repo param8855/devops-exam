@@ -50,33 +50,33 @@ resource "aws_lambda_function" "invoke_http" {
     }
   }
 
-  vpc_config {
-    subnet_ids         = [aws_subnet.private_subnet_1a.id]
-    security_group_ids = [aws_security_group.lambda_sg.id]
-    vpc_id = data.aws_vpc.vpc.id
-  }
+#   vpc_config {
+#     subnet_ids         = [aws_subnet.private_subnet_1a.id]
+#     security_group_ids = [aws_security_group.lambda_sg.id]
+#     vpc_id = data.aws_vpc.vpc.id
+#   }
 }
 
-resource "aws_security_group" "lambda_sg" {
-  name        = "lambda-sg"
-  vpc_id      = data.aws_vpc.vpc.id
+# resource "aws_security_group" "lambda_sg" {
+#   name        = "lambda-sg"
+#   vpc_id      = data.aws_vpc.vpc.id
 
-#   ingress {
-#     from_port        = 443
-#     to_port          = 443
-#     protocol         = "tcp"
-#     cidr_blocks      = ["10.0.0.0/16"]
+# #   ingress {
+# #     from_port        = 443
+# #     to_port          = 443
+# #     protocol         = "tcp"
+# #     cidr_blocks      = ["10.0.0.0/16"]
+# #   }
+
+#   egress {
+#     from_port        = 0
+#     to_port          = 0
+#     protocol         = "-1"
+#     cidr_blocks      = ["0.0.0.0/0"]
+#     ipv6_cidr_blocks = ["::/0"]
 #   }
 
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  tags = {
-    Name = "lambda-sg"
-  }
-}
+#   tags = {
+#     Name = "lambda-sg"
+#   }
+# }
