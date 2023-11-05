@@ -37,7 +37,6 @@ pipeline{
             steps{
                 sh '''
                 echo "Invoking your AWS Lambda"
-                python3 -m pip install requests
                 aws lambda invoke --function-name invoke_http_request2 out --log-type Tail --query 'LogResult' --output text |  base64 -d   
                 ''' 
             }
