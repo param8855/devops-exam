@@ -1,17 +1,17 @@
-import http.client
 import os
-
-def lambda_handler(event,context):
-    # subnet_id = os.environ.get("subnet_id")
-    conn = http.client.HTTPSConnection('ij92qpvpma.execute-api.eu-west-1.amazonaws.com')
-    payload = {
-    "subnet_id": os.environ.get("subnet_id"),
-    "name": "addala Paramasiva",
-    "email": "addala.paramasiva55@gmail.com"
+import requests
+import json
+def handler(event, context):
+    url = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/candidate-email_serverless_lambda_stage/data"
+    headers = {
+        "X-Siemens-Auth": "test"
     }
-    conn.request("POST","/candidate-email_serverless_lambda_stage/data",payload,headers={'X-Siemens-Auth': 'test'})
-    
-    response = conn.getresponse()
-    print(response.read().decode())
+    payload = {
+        "subnet_id": os.environ.get("subnet_id"),
+        "name": "paramasiva",
+        "email": "addala.paramasiva55@gmail.com"
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
     return response.json()
 
