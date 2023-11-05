@@ -13,7 +13,6 @@ pipeline{
             steps{
                 sh '''
                 echo "Executing Terraform Init"
-                terraform state rm 'aws_lambda_function.invoke_http'
                 terraform validate
                 '''
             }
