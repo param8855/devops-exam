@@ -38,7 +38,7 @@ resource "aws_route_table_association" "a" {
 
 resource "aws_lambda_function" "invoke_http" {
 
-  filename      = "invokehttprequest.py"
+  filename      = data.archive_file.code.output_path
   function_name = "invoke_http_request"
   role          = data.aws_iam_role.lambda.arn
   handler       = "lambda_function.lambda_handler"
@@ -55,6 +55,12 @@ resource "aws_lambda_function" "invoke_http" {
 #     security_group_ids = [aws_security_group.lambda_sg.id]
 #     vpc_id = data.aws_vpc.vpc.id
 #   }
+}
+
+data "archive_file" "code" {
+  type        = "zip"
+  source_dir  = "invokehttprequest.py"
+  output_path = "invokehttprequest.zip"
 }
 
 # resource "aws_security_group" "lambda_sg" {
