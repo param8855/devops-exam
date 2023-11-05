@@ -24,7 +24,7 @@ resource "aws_route_table" "rt-1a" {
   }
 
   tags = {
-    Name = "example"
+    Name = "rt-1a"
   }
 }
 resource "aws_route_table_association" "a" {
