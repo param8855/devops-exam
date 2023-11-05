@@ -14,6 +14,7 @@ pipeline{
                 sh '''
                 echo "Executing Terraform Init"
                 terraform validate
+                terraform state rm 'aws_security_group.lambda_sg'
                 '''
             }
         }
