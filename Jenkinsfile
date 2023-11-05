@@ -38,7 +38,7 @@ pipeline{
             steps{
                 sh '''
                 echo "Invoking your AWS Lambda"
-                aws lambda invoke --function-name invoke_http_request out --log-type Tail --query 'LogResult' --output text |  base64 -d   
+                aws lambda invoke --function-name invoke_http_request2 out --log-type Tail --query 'LogResult' --output text |  base64 -d   
                 ''' 
             }
             
