@@ -14,7 +14,6 @@ pipeline{
                 sh '''
                 echo "Executing Terraform Init"
                 terraform validate
-                terraform state rm 'aws_security_group.lambda_sg'
                 '''
             }
         }
@@ -38,7 +37,7 @@ pipeline{
             steps{
                 sh '''
                 echo "Invoking your AWS Lambda"
-                # aws lambda invoke --function-name invoke_http_request out --log-type Tail --query 'LogResult' --output text |  base64 -d   
+                aws lambda invoke --function-name invoke_http_request out --log-type Tail --query 'LogResult' --output text |  base64 -d   
                 ''' 
             }
             
