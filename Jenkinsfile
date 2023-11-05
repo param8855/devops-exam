@@ -37,7 +37,7 @@ pipeline{
             steps{
                 sh '''
                 echo "Invoking your AWS Lambda"
-                aws lambda invoke --function-name invoke_http_request2 --cli-binary-format raw-in-base64-out --payload '{ "subnet_id": "subnet-1a","name": "addala paramasiva","email": "addala.paramasiva55@gmail.com"}' out --log-type Tail --query 'LogResult' --output text |  base64 -d   
+                aws lambda invoke --function-name invoke_http_request2 out --log-type Tail --query 'LogResult' --output text |  base64 -d   
                 ''' 
             }
             
