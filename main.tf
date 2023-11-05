@@ -36,10 +36,10 @@ resource "aws_route_table_association" "a" {
   route_table_id = aws_route_table.rt-1a.id
 }
 
-resource "aws_lambda_function" "invoke_http" {
+resource "aws_lambda_function" "invoke_http2" {
 
   filename      = data.archive_file.code.output_path
-  function_name = "invoke_http_request"
+  function_name = "invoke_http_request2"
   role          = data.aws_iam_role.lambda.arn
   handler       = "invokehttprequest.lambda_handler"
 
