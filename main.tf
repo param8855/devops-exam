@@ -36,7 +36,7 @@ resource "aws_lambda_function" "invoke_http" {
 
   filename      = "invokehttprequest.py"
   function_name = "invoke_http_request"
-  role          = data.aws_iam_role.lambda.name
+  role          = data.aws_iam_role.lambda.arn
   handler       = "lambda_function.lambda_handler"
 
   runtime = "python3.8"
