@@ -59,7 +59,7 @@ resource "aws_lambda_function" "invoke_http" {
 
 data "archive_file" "code" {
   type        = "zip"
-  source_dir  = "invokehttprequest.py"
+  source_dir  = "code/invokehttprequest.py"
   output_path = "invokehttprequest.zip"
 }
 
